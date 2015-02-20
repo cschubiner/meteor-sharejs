@@ -22,7 +22,7 @@
 
 <template name="mainArea">
     <div class="container full-height">
-        <div class="row">
+        <div class="row" style="margin-bottom:-50px;">
             <h2>Public editor</h2>
         </div>
         <div class="col-xs-12 editor-container full-height">
@@ -99,7 +99,7 @@
             <input class="form-control" type="text" name="title" value="{{title}}">
             <button class="btn btn-danger btn-small">Delete this player</button>
         </form>
-        <form class="navbar-form pull-right">
+       <!--  <form class="navbar-form pull-right">
             <label class="radio-inline">
                 <input type="radio" name="editor" value="ace" checked={{editorType "ace"}}> Ace Editor
             </label>
@@ -109,7 +109,7 @@
             <label class="radio-inline">
                 <input type="radio" name="editor" value="textarea" checked={{editorType "textarea"}}>Textarea
             </label>
-        </form>
+        </form> -->
     </div>
 </template>
 

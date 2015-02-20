@@ -18,6 +18,10 @@ Router.route('/:_id', function () {
     this.render('playerpage', {
         playerName: a
     });
+    var x = document.getElementsByClassName("ace_text-input");
+    for (var i = 0; i < x.length; i += 1) {
+        x.setAttribute('readonly', 'readonly');
+    }
 });
 
 // when you navigate to "/one" automatically render the template named "One".
