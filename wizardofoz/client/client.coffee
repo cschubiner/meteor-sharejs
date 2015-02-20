@@ -42,7 +42,7 @@ Template.editor.helpers
   docid: -> Session.get("document")
 
 Template.editorPublic.helpers
-  docid: -> 'publicEditor'
+  docid: -> 'publicEditorSD12T4190'
 
 Template.editor.events =
   "keydown input[name=title]": (e) ->
@@ -121,7 +121,7 @@ Template.editorPlayer.helpers
   configCM: ->
     (cm) ->
       cm.setOption("theme", "default")
-      cm.setOption("lineNumbers", true)
+      cm.setOption("lineNumbers", false)
       cm.setOption("lineWrapping", true)
       cm.setOption("smartIndent", true)
       cm.setOption("indentWithTabs", true)

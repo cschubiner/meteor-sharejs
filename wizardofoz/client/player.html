@@ -1,11 +1,7 @@
 <template name="playerpage">
-    <head>
-      <title>Wizard of Oz</title>
-    </head>
-
     <body>
-      <h2>Welcome to an Inferno playtest!</h2>
-      <div class="col-xs-12 editor-container full-height">
+      <h2 style="margin-top:-15px; margin-bottom:-42px;">Inferno playtest</h2>
+      <div class="col-xs-12 editor-container full-height" style="height: 300px;margin-bottom:-20px;">
           {{> editorPublic}}
       </div>
       <div class="col-xs-12 editor-container full-height">
@@ -17,7 +13,15 @@
 <template name="editorPlayer">
     {{#with docid}}
         {{> docTitlePlayer this}}
-        {{> sharejsText docid=this id="editor"}}
+        {{#if textarea}}
+            {{> sharejsText docid=this id="editor"}}
+        {{else}}
+            {{#if cm}}
+                {{> sharejsCM docid=this onRender=configCM id="editor"}}
+            {{else}}
+                {{> sharejsAce docid=this onRender=configAce id="editor"}}
+            {{/if}}
+        {{/if}}
     {{/with}}
 </template>
 
