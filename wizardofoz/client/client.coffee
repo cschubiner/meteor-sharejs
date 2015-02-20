@@ -5,6 +5,7 @@ Template.docList.events =
   "click button": ->
     Documents.insert
       title: "New Player"
+      playerName: "New Player"
     , (err, id) ->
       return unless id
       Session.set("document", id)
