@@ -1,4 +1,3 @@
-
 Template.docList.helpers
   documents: -> Documents.find()
 
@@ -40,6 +39,9 @@ Template.docTitlePlayer.helpers
 
 Template.editor.helpers
   docid: -> Session.get("document")
+
+Template.editorPublic.helpers
+  docid: -> 'publicEditor'
 
 Template.editor.events =
   "keydown input[name=title]": (e) ->

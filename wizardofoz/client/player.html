@@ -1,58 +1,26 @@
 <template name="playerpage">
     <head>
       <title>Wizard of Oz</title>
-
     </head>
 
     <body>
       <h2>Welcome to an Inferno playtest!</h2>
-      <div class="col-xs-9 editor-container full-height">
+      <div class="col-xs-12 editor-container full-height">
+          {{> editorPublic}}
+      </div>
+      <div class="col-xs-12 editor-container full-height">
           {{> editorPlayer}}
       </div>
     </body>
 </template>
 
-<template name="nametag">
-  <p>My name is {{name}}.</p>
+<template name="editorPlayer">
+    {{#with docid}}
+        {{> docTitlePlayer this}}
+        {{> sharejsText docid=this id="editor"}}
+    {{/with}}
 </template>
 
-<template name="home">
-This is the home template.
-</template>
+<template name="docTitlePlayer">
 
-
-<template name="Home">
-  {{> Nav}}
-
-  <h1>Home</h1>
-
-  <p>
-    Data Title: {{title}}
-  </p>
-</template>
-
-<template name="one">
-  {{> Nav}}
-
-  <h1>Page One</h1>
-</template>
-
-<template name="Two">
-  {{> Nav}}
-
-  <h1>Page Two</h1>
-</template>
-
-<template name="Nav">
-  <ul>
-    <li>
-      <a href="/">Home</a>
-    </li>
-    <li>
-      <a href="/one">Page One</a>
-    </li>
-    <li>
-      <a href="/two">Page Two</a>
-    </li>
-  </ul>
 </template>
