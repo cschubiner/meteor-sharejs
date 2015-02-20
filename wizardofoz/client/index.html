@@ -1,0 +1,123 @@
+<template name="main">
+    <head>
+      <title>Wizard of Oz</title>
+
+    </head>
+
+    <body>
+        {{> mainArea}}
+    </body>
+</template>
+
+
+<template name="index">
+    <head>
+      <title>Wizard of Oz</title>
+
+    </head>
+
+    <body>
+        <h2>Welcome to the Inferno playtest!</h2>
+        <p>Your Game Master will send you a link shortly :)</p>
+    </body>
+</template>
+
+<template name="mainArea">
+    <div class="container full-height">
+        <div class="row upper">
+            <div class="col-xs-3 full-height">
+                {{> docList}}
+            </div>
+            <div class="col-xs-9 editor-container full-height">
+                {{> editor}}
+            </div>
+        </div>
+        <div class="row footer">
+            <div class="col-xs-3">{{! placeholder}}</div>
+        </div>
+    </div>
+</template>
+
+<template name="docList">
+    <h3>Pick a player...</h3>
+    <ul class="nav nav-pills nav-stacked" id="list">
+    {{#each documents}}
+        {{> docItem}}
+    {{/each}}
+    </ul>
+    <button class="btn btn-warning">New Player</button>
+</template>
+
+<template name="docItem">
+    <li class="{{#if current}}active{{/if}}">
+         <a href="#">{{title}}</a>
+    </li>
+</template>
+
+<template name="editor">
+    {{#with docid}}
+        {{> docTitle this}}
+        {{#if textarea}}
+            {{> sharejsText docid=this id="editor"}}
+        {{else}}
+            {{#if cm}}
+                {{> sharejsCM docid=this onRender=configCM id="editor"}}
+            {{else}}
+                {{> sharejsAce docid=this onRender=configAce id="editor"}}
+            {{/if}}
+        {{/if}}
+    {{/with}}
+</template>
+
+<template name="docTitle">
+    <div class="navbar navbar-default">
+        Player URL: <a href="{{docURL}}">{{title}}'s Player Page</a>
+        <form class="navbar-form pull-left">
+            <input class="form-control" type="text" name="title" value="{{title}}">
+            <button class="btn btn-danger btn-small">Delete this player</button>
+        </form>
+        <form class="navbar-form pull-right">
+            <label class="radio-inline">
+                <input type="radio" name="editor" value="ace" checked={{editorType "ace"}}> Ace Editor
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="editor" value="cm" checked={{editorType "cm"}}> CodeMirror
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="editor" value="textarea" checked={{editorType "textarea"}}>Textarea
+            </label>
+        </form>
+    </div>
+</template>
+
+
+<template name="editorPlayer">
+    {{#with docid}}
+        {{> docTitlePlayer this}}
+        {{#if textarea}}
+            {{> sharejsText docid=this id="editor"}}
+        {{else}}
+            {{#if cm}}
+                {{> sharejsCM docid=this onRender=configCM id="editor"}}
+            {{else}}
+                {{> sharejsAce docid=this onRender=configAce id="editor"}}
+            {{/if}}
+        {{/if}}
+    {{/with}}
+</template>
+
+<template name="docTitlePlayer">
+    <div class="navbar navbar-default">
+        <form class="navbar-form pull-right">
+            <label class="radio-inline">
+                <input type="radio" name="editor" value="ace" checked={{editorType "ace"}}> Ace Editor
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="editor" value="cm" checked={{editorType "cm"}}> CodeMirror
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="editor" value="textarea" checked={{editorType "textarea"}}>Textarea
+            </label>
+        </form>
+    </div>
+</template>
